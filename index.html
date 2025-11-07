@@ -1,0 +1,434 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ideal – Coffee Machine for Cafe & Restaurant</title>
+  <!-- Tailwind CDN to keep the exact look without heavy JS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <style>
+    /* Simple fade-in in pure CSS (no JS animation libs) */
+    .fade-in { opacity: 0; transform: translateY(12px); animation: fadeUp .6s ease forwards; }
+    .delay-1 { animation-delay: .1s; }
+    @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+
+    /* Lightweight card + button styles (no @apply, works without build step) */
+    .card{background:#fff;border:1px solid rgba(0,0,0,.08);border-radius:12px;box-shadow:0 1px 2px rgba(0,0,0,.04)}
+    .card-content{padding:20px}
+    .btn{display:inline-flex;align-items:center;gap:8px;border-radius:10px;background:#0a0a0a;color:#fff;padding:10px 16px;font-size:14px;font-weight:600}
+    .btn:hover{background:#171717}
+    .btn-secondary{background:#f3f4f6;color:#111827}
+    .btn-secondary:hover{background:#e5e7eb}
+    .btn-ghost{background:transparent;color:#111827}
+    .btn-ghost:hover{background:#f3f4f6}
+    .category-block .card-content{
+        background-color: #f7f5f5;
+    }
+
+    @media(max-width:680px){
+        .rounded-md{
+            width: 80%;
+        }
+        .py-14 {
+            padding-top: .5rem;
+            padding-bottom: .5rem;
+        }
+        .py-16 {
+            padding-top: 1rem!important;
+            padding-bottom: 0rem!important;
+        }
+        form .form-input{
+            width: 10rem;
+        }
+        #wa-fab{
+            display: none;
+        }
+    }
+  </style>
+</head>
+<body class="min-h-screen bg-neutral-50 text-neutral-900">
+
+  <!-- WhatsApp FAB -->
+  <a id="wa-fab" href="#" target="_blank" rel="noreferrer"
+     class="fixed right-4 bottom-4 z-50 inline-flex items-center gap-2 rounded-full bg-green-500 px-5 py-3 text-white shadow-xl hover:bg-green-600 focus:ring-4 focus:ring-green-300"
+     aria-label="Chat on WhatsApp">
+    <i data-lucide="message-circle" class="w-5 h-5"></i> WhatsApp
+  </a>
+
+  <!-- HERO -->
+  <section class="relative overflow-hidden">
+    <div class="absolute inset-0 -z-10 bg-gradient-to-br from-slate-50 via-white to-neutral-100"></div>
+    <div class="mx-auto max-w-7xl px-6 py-16 md:py-24">
+      <div class="grid items-center gap-10 md:grid-cols-2">
+        <div class="fade-in">
+          <span class="inline-flex items-center gap-2 rounded-full bg-amber-100 px-3 py-1 text-amber-800 text-xs font-medium">
+            <i data-lucide="coffee" class="w-4 h-4"></i> Coffee Machine for Cafe and Restaurant
+          </span>
+          <h1 class="mt-4 text-4xl font-extrabold leading-tight md:text-5xl">Commercial Coffee Machines for Cafes & Restaurants</h1>
+          <p class="mt-4 text-base text-neutral-600 md:text-lg">Ideal brings professional coffee machines designed for high‑volume service. From commercial espresso to vending and bean‑to‑cup automation, we support cafes, restaurants and quick service outlets.</p>
+          <div class="mt-6 flex flex-wrap items-center gap-3">
+            <span class="rounded-full bg-white px-3 py-1 text-xs text-neutral-700 shadow">coffee machine for cafe and restaurant</span>
+            <span class="rounded-full bg-white px-3 py-1 text-xs text-neutral-700 shadow">commercial espresso</span>
+            <span class="rounded-full bg-white px-3 py-1 text-xs text-neutral-700 shadow">fully automatic</span>
+            <span class="rounded-full bg-white px-3 py-1 text-xs text-neutral-700 shadow">with grinder</span>
+            <span class="rounded-full bg-white px-3 py-1 text-xs text-neutral-700 shadow">filter / drip</span>
+            <span class="rounded-full bg-white px-3 py-1 text-xs text-neutral-700 shadow">vending</span>
+            <span class="rounded-full bg-white px-3 py-1 text-xs text-neutral-700 shadow">small cafe solutions</span>
+          </div>
+          <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+            <a href="#products" class="btn w-full sm:w-auto"><i data-lucide="shopping-cart" class="w-5 h-5"></i> Get Quote</a>
+            <a id="wa-hero" href="#" target="_blank" rel="noreferrer" class="btn btn-secondary w-full sm:w-auto"><i data-lucide="message-circle" class="w-5 h-5"></i> WhatsApp Business</a>
+          </div>
+          <div class="mt-6 flex items-center gap-1 text-amber-600">
+            <span class="text-amber-500 text-lg">★★★★★</span>
+            <span class="ml-2 text-sm text-neutral-600">Trusted by cafes & restaurants across India</span>
+          </div>
+        </div>
+
+        <div class="relative fade-in delay-1">
+          <img src="https://img.idealcoffeemachines.com/uploads/products/1200x1200_prod_1746002722_2470.webp" alt="Commercial espresso machine in a cafe" class="aspect-[4/3] w-full rounded-2xl object-cover shadow-2xl" />
+          <div class="absolute -bottom-5 -left-5 hidden rounded-2xl bg-white p-4 shadow-xl md:block">
+            <p class="text-sm font-medium">Pan‑India Delivery • Installation • On‑site Training</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Trust badges (static markup, no JS needed) -->
+      <div class="mt-12 grid gap-4 sm:grid-cols-3">
+        <div class="card border-none shadow-sm"><div class="card-content flex items-center gap-4"><i data-lucide="truck" class="w-8 h-8 text-amber-600"></i><div><p class="font-semibold">Pan‑India Delivery & Installation</p><p class="text-sm text-neutral-600">Fast shipping and professional installation for commercial orders.</p></div></div></div>
+        <div class="card border-none shadow-sm"><div class="card-content flex items-center gap-4"><i data-lucide="shield-check" class="w-8 h-8 text-amber-600"></i><div><p class="font-semibold">Warranty & On‑Site Support</p><p class="text-sm text-neutral-600">Authorized products with dedicated after‑sales support and servicing.</p></div></div></div>
+        <div class="card border-none shadow-sm"><div class="card-content flex items-center gap-4"><i data-lucide="refresh-cw" class="w-8 h-8 text-amber-600"></i><div><p class="font-semibold">Service & Maintenance Plans</p><p class="text-sm text-neutral-600">Flexible maintenance and rental options for businesses.</p></div></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRODUCT CATEGORIES (static HTML; small search JS below) -->
+  <section id="products" class="bg-white py-16">
+    <div class="mx-auto max-w-7xl px-6">
+      <div class="mb-8 flex flex-col items-start justify-between gap-4 md:flex-row md:items-end">
+        <div>
+          <h2 class="text-3xl font-bold md:text-4xl">Commercial Coffee Machines for Cafe & Restaurant</h2>
+          <p class="mt-2 max-w-2xl text-neutral-600">Explore commercial espresso, fully automatic, vending and compact solutions.</p>
+        </div>
+        <!-- <div class="w-full max-w-sm md:w-auto">
+          <input id="search" type="search" placeholder="Search: espresso, automatic, grinder…" class="rounded-xl w-full border border-neutral-300 px-3 py-2" />
+        </div> -->
+      </div>
+
+      <!-- Category blocks -->
+      <div id="category-wrap">
+        <!-- Espresso -->
+        <div class="mb-12 category-block" data-keywords="commercial espresso machines high-performance cafes restaurants espresso machine for coffee shop espresso coffee machine for cafe commercial espresso machine for small coffee shop">
+
+          <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            <div class="card overflow-hidden border-none shadow-sm transition hover:shadow-md product-card" data-keywords="Ideal E61 Elegante espresso machine for coffee shop commercial">
+              <a href="https://idealcoffeemachines.com/product/ideal-e61-elegante">
+                <img src="https://img.idealcoffeemachines.com/uploads/transparent_img/trans_174098660087333.png" style="background-color: #F0F0F0;" alt="Ideal E61 Elegante" class="aspect-[4/3] w-full object-cover">
+              </a>
+              <div class="card-content"><h4 class="text-lg font-semibold">Ideal E61 Elegante</h4><div class="mt-4 flex items-center justify-between"><a href="#contact" class="btn">Get Quote</a><a href="#" class="btn btn-ghost btn-sm wa-link">WhatsApp</a></div></div>
+            </div>
+
+            <div class="card overflow-hidden border-none shadow-sm transition hover:shadow-md product-card" data-keywords="Ideal D24 Pro 3‑Group espresso commercial">
+              <a href="https://idealcoffeemachines.com/product/ideal-d24-pro">
+                <img src="https://img.idealcoffeemachines.com/uploads/transparent_img/trans_176231900810700.png" style="background-color: #F0F0F0;" alt="Ideal D24 Pro 3‑Group" class="aspect-[4/3] w-full object-cover">
+              </a>
+              <div class="card-content"><h4 class="text-lg font-semibold">Ideal D24 Pro</h4><div class="mt-4 flex items-center justify-between"><a href="#contact" class="btn">Get Quote</a><a href="#" class="btn btn-ghost btn-sm wa-link">WhatsApp</a></div></div>
+            </div>
+            
+            <div class="card overflow-hidden border-none shadow-sm transition hover:shadow-md product-card" data-keywords="Ideal La Bella Black espresso small shop">
+              <a href="https://idealcoffeemachines.com/product/ideal-la-bella-black">
+                <img src="https://images.unsplash.com/photo-1522228115018-d838bcce5e5f?q=80&w=1600&auto=format&fit=crop" style="background-color: #F0F0F0;" alt="Ideal La Bella Black" class="aspect-[4/3] w-full object-cover">
+              </a>
+              <div class="card-content"><h4 class="text-lg font-semibold">Ideal La Bella Black</h4><div class="mt-4 flex items-center justify-between"><a href="#contact" class="btn">Get Quote</a><a href="#" class="btn btn-ghost btn-sm wa-link">WhatsApp</a></div></div>
+            </div>
+            
+            <div class="card overflow-hidden border-none shadow-sm transition hover:shadow-md product-card" data-keywords="Ideal La Bella White 2‑Group espresso machine for coffee shop commercial">
+              <a href="https://idealcoffeemachines.com/product/ideal-la-bella-white">
+                <img src="https://img.idealcoffeemachines.com/uploads/transparent_img/trans_176189786719511.png" style="background-color: #F0F0F0;" alt="Ideal La Bella White 2‑Group" class="aspect-[4/3] w-full object-cover">
+              </a>
+              <div class="card-content"><h4 class="text-lg font-semibold">Ideal La Bella White</h4><div class="mt-4 flex items-center justify-between"><a href="#contact" class="btn">Get Quote</a><a href="#" class="btn btn-ghost btn-sm wa-link">WhatsApp</a></div></div>
+            </div>
+
+            <div class="card overflow-hidden border-none shadow-sm transition hover:shadow-md product-card" data-keywords="Ideal E61 3‑Group espresso commercial">
+              <a href="https://idealcoffeemachines.com/product/ideal-e61">
+                <img src="https://img.idealcoffeemachines.com/uploads/transparent_img/trans_17297640204018.webp" style="background-color: #F0F0F0;" alt="Ideal E61 3‑Group" class="aspect-[4/3] w-full object-cover">
+              </a>
+              <div class="card-content"><h4 class="text-lg font-semibold">Ideal E61</h4><div class="mt-4 flex items-center justify-between"><a href="#contact" class="btn">Get Quote</a><a href="#" class="btn btn-ghost btn-sm wa-link">WhatsApp</a></div></div>
+            </div>
+            
+            <div class="card overflow-hidden border-none shadow-sm transition hover:shadow-md product-card" data-keywords="Ideal Tech Brew Automatic 1‑Group espresso small shop">
+              <a href="https://idealcoffeemachines.com/product/ideal-tech-brew-automatic">
+                <img src="https://img.idealcoffeemachines.com/uploads/transparent_img/trans_174100318694488.png" style="background-color: #F0F0F0;" alt="Ideal Tech Brew Automatic 1‑Group" class="aspect-[4/3] w-full object-cover">
+              </a>
+              <div class="card-content"><h4 class="text-lg font-semibold">Ideal Tech Brew Automatic</h4><div class="mt-4 flex items-center justify-between"><a href="#contact" class="btn">Get Quote</a><a href="#" class="btn btn-ghost btn-sm wa-link">WhatsApp</a></div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Fully Automatic -->
+        <!-- <div class="mb-12 category-block" data-keywords="fully automatic machines bean‑to‑cup automation busy outlets fully automatic coffee machine for cafe restaurant">
+          <div class="mb-4 flex items-center justify-between">
+            <div>
+              <h3 class="text-2xl font-semibold">Fully Automatic Machines</h3>
+              <p class="text-sm text-neutral-600">Bean‑to‑cup, reliable automation for busy outlets.</p>
+            </div>
+            <div class="hidden text-xs text-neutral-500 md:block">SEO: fully automatic coffee machine for cafe, fully automatic coffee machine for restaurant</div>
+          </div>
+          <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            <div class="card overflow-hidden border-none shadow-sm transition hover:shadow-md product-card" data-keywords="AutoServe Bean2Cup automatic bean to cup">
+              <img src="https://images.unsplash.com/photo-1497515114629-f71d768fd07c?q=80&w=1600&auto=format&fit=crop" alt="AutoServe Bean2Cup" class="aspect-[4/3] w-full object-cover">
+              <div class="card-content"><h4 class="text-lg font-semibold">AutoServe Bean2Cup</h4><div class="mt-4 flex items-center justify-between"><a href="#contact" class="btn">Get Quote</a><a href="#" class="btn btn-ghost btn-sm wa-link">WhatsApp</a></div></div>
+            </div>
+            <div class="card overflow-hidden border-none shadow-sm transition hover:shadow-md product-card" data-keywords="SmartCafe One‑Touch automatic one touch">
+              <img src="https://images.unsplash.com/photo-1541167760496-40524fbd76d4?q=80&w=1600&auto=format&fit=crop" alt="SmartCafe One‑Touch" class="aspect-[4/3] w-full object-cover">
+              <div class="card-content"><h4 class="text-lg font-semibold">SmartCafe One‑Touch</h4><div class="mt-4 flex items-center justify-between"><a href="#contact" class="btn">Get Quote</a><a href="#" class="btn btn-ghost btn-sm wa-link">WhatsApp</a></div></div>
+            </div>
+            <div class="card overflow-hidden border-none shadow-sm transition hover:shadow-md product-card" data-keywords="ProAuto Brew automatic">
+              <img src="https://images.unsplash.com/photo-1549719386-74dfcbf7dbed?q=80&w=1600&auto=format&fit=crop" alt="ProAuto Brew" class="aspect-[4/3] w-full object-cover">
+              <div class="card-content"><h4 class="text-lg font-semibold">ProAuto Brew</h4><div class="mt-4 flex items-center justify-between"><a href="#contact" class="btn">Get Quote</a><a href="#" class="btn btn-ghost btn-sm wa-link">WhatsApp</a></div></div>
+            </div>
+          </div>
+        </div> -->
+
+        <!-- With Grinder -->
+        <!-- <div class="mb-12 category-block" data-keywords="machines with built‑in grinder integrated consistent flavour speed coffee machine with grinder for cafe grinding machine for shop">
+          <div class="mb-4 flex items-center justify-between">
+            <div>
+              <h3 class="text-2xl font-semibold">Machines with Built‑in Grinder</h3>
+              <p class="text-sm text-neutral-600">Integrated grinders for consistent flavour and speed.</p>
+            </div>
+            <div class="hidden text-xs text-neutral-500 md:block">SEO: coffee machine with grinder for cafe, coffee grinding machine for shop</div>
+          </div>
+          <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            <div class="card overflow-hidden border-none shadow-sm transition hover:shadow-md product-card" data-keywords="GrindServe Combo grinder integrated">
+              <img src="https://images.unsplash.com/photo-1485808191679-5f86510681a2?q=80&w=1600&auto=format&fit=crop" alt="GrindServe Combo" class="aspect-[4/3] w-full object-cover">
+              <div class="card-content"><h4 class="text-lg font-semibold">GrindServe Combo</h4><div class="mt-4 flex items-center justify-between"><a href="#contact" class="btn">Get Quote</a><a href="#" class="btn btn-ghost btn-sm wa-link">WhatsApp</a></div></div>
+            </div>
+            <div class="card overflow-hidden border-none shadow-sm transition hover:shadow-md product-card" data-keywords="MillPro Integrated grinder">
+              <img src="https://images.unsplash.com/photo-1503481766315-7a586b20f66f?q=80&w=1600&auto=format&fit=crop" alt="MillPro Integrated" class="aspect-[4/3] w-full object-cover">
+              <div class="card-content"><h4 class="text-lg font-semibold">MillPro Integrated</h4><div class="mt-4 flex items-center justify-between"><a href="#contact" class="btn">Get Quote</a><a href="#" class="btn btn-ghost btn-sm wa-link">WhatsApp</a></div></div>
+            </div>
+            <div class="card overflow-hidden border-none shadow-sm transition hover:shadow-md product-card" data-keywords="BeanFlow Integrated grinder">
+              <img src="https://images.unsplash.com/photo-1437419764061-2473afe69fc2?q=80&w=1600&auto=format&fit=crop" alt="BeanFlow Integrated" class="aspect-[4/3] w-full object-cover">
+              <div class="card-content"><h4 class="text-lg font-semibold">BeanFlow Integrated</h4><div class="mt-4 flex items-center justify-between"><a href="#contact" class="btn">Get Quote</a><a href="#" class="btn btn-ghost btn-sm wa-link">WhatsApp</a></div></div>
+            </div>
+          </div>
+        </div> -->
+
+        <!-- Filter / Drip -->
+        <!-- <div class="mb-12 category-block" data-keywords="filter drip machines bulk brewing restaurants high volume filter coffee machine for cafe drip coffee machine for restaurant">
+          <div class="mb-4 flex items-center justify-between">
+            <div>
+              <h3 class="text-2xl font-semibold">Filter & Drip Machines</h3>
+              <p class="text-sm text-neutral-600">Bulk brewing solutions for restaurants and high‑volume service.</p>
+            </div>
+            <div class="hidden text-xs text-neutral-500 md:block">SEO: filter coffee machine for cafe, drip coffee machine for restaurant</div>
+          </div>
+          <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            <div class="card overflow-hidden border-none shadow-sm transition hover:shadow-md product-card" data-keywords="DripServe Commercial bulk brew">
+              <img src="https://images.unsplash.com/photo-1459755486867-b55449bb39ff?q=80&w=1600&auto=format&fit=crop" alt="DripServe Commercial" class="aspect-[4/3] w-full object-cover">
+              <div class="card-content"><h4 class="text-lg font-semibold">DripServe Commercial</h4><div class="mt-4 flex items-center justify-between"><a href="#contact" class="btn">Get Quote</a><a href="#" class="btn btn-ghost btn-sm wa-link">WhatsApp</a></div></div>
+            </div>
+            <div class="card overflow-hidden border-none shadow-sm transition hover:shadow-md product-card" data-keywords="BulkBrew Pro restaurant">
+              <img src="https://images.unsplash.com/photo-1461988625982-7e46a099bf4f?q=80&w=1600&auto=format&fit=crop" alt="BulkBrew Pro" class="aspect-[4/3] w-full object-cover">
+              <div class="card-content"><h4 class="text-lg font-semibold">BulkBrew Pro</h4><div class="mt-4 flex items-center justify-between"><a href="#contact" class="btn">Get Quote</a><a href="#" class="btn btn-ghost btn-sm wa-link">WhatsApp</a></div></div>
+            </div>
+            <div class="card overflow-hidden border-none shadow-sm transition hover:shadow-md product-card" data-keywords="KitchenBrew 12‑L bulk">
+              <img src="https://images.unsplash.com/photo-1461988091159-192b6df7054f?q=80&w=1600&auto=format&fit=crop" alt="KitchenBrew 12‑L" class="aspect-[4/3] w-full object-cover">
+              <div class="card-content"><h4 class="text-lg font-semibold">KitchenBrew 12‑L</h4><div class="mt-4 flex items-center justify-between"><a href="#contact" class="btn">Get Quote</a><a href="#" class="btn btn-ghost btn-sm wa-link">WhatsApp</a></div></div>
+            </div>
+          </div>
+        </div> -->
+
+        <!-- Vending -->
+        <!-- <div class="mb-12 category-block" data-keywords="vending retail machines self‑serve shops quick‑service outlets coffee vending machine for shop cafe">
+          <div class="mb-4 flex items-center justify-between">
+            <div>
+              <h3 class="text-2xl font-semibold">Vending & Retail Machines</h3>
+              <p class="text-sm text-neutral-600">Self‑serve vending and retail setups for shops and quick‑service outlets.</p>
+            </div>
+            <div class="hidden text-xs text-neutral-500 md:block">SEO: coffee vending machine for shop, coffee vending machine for cafe</div>
+          </div>
+          <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            <div class="card overflow-hidden border-none shadow-sm transition hover:shadow-md product-card" data-keywords="QuickVend Compact vending">
+              <img src="https://images.unsplash.com/photo-1527161153334-4f3aa7fd54b0?q=80&w=1600&auto=format&fit=crop" alt="QuickVend Compact" class="aspect-[4/3] w-full object-cover">
+              <div class="card-content"><h4 class="text-lg font-semibold">QuickVend Compact</h4><div class="mt-4 flex items-center justify-between"><a href="#contact" class="btn">Get Quote</a><a href="#" class="btn btn-ghost btn-sm wa-link">WhatsApp</a></div></div>
+            </div>
+            <div class="card overflow-hidden border-none shadow-sm transition hover:shadow-md product-card" data-keywords="VendPro Series vending">
+              <img src="https://images.unsplash.com/photo-1570968915860-54d5c301fa9b?q=80&w=1600&auto=format&fit=crop" alt="VendPro Series" class="aspect-[4/3] w-full object-cover">
+              <div class="card-content"><h4 class="text-lg font-semibold">VendPro Series</h4><div class="mt-4 flex items-center justify-between"><a href="#contact" class="btn">Get Quote</a><a href="#" class="btn btn-ghost btn-sm wa-link">WhatsApp</a></div></div>
+            </div>
+            <div class="card overflow-hidden border-none shadow-sm transition hover:shadow-md product-card" data-keywords="PodVend Touch vending">
+              <img src="https://images.unsplash.com/photo-1517702046019-2b44886488de?q=80&w=1600&auto=format&fit=crop" alt="PodVend Touch" class="aspect-[4/3] w-full object-cover">
+              <div class="card-content"><h4 class="text-lg font-semibold">PodVend Touch</h4><div class="mt-4 flex items-center justify-between"><a href="#contact" class="btn">Get Quote</a><a href="#" class="btn btn-ghost btn-sm wa-link">WhatsApp</a></div></div>
+            </div>
+          </div>
+        </div> -->
+
+        <!-- Compact -->
+        <!-- <div class="mb-12 category-block" data-keywords="compact solutions small cafes small footprint tight spaces small coffee machine for shop small cafe">
+          <div class="mb-4 flex items-center justify-between">
+            <div>
+              <h3 class="text-2xl font-semibold">Compact Solutions for Small Cafes</h3>
+              <p class="text-sm text-neutral-600">Powerful performance in a small footprint for tight spaces.</p>
+            </div>
+            <div class="hidden text-xs text-neutral-500 md:block">SEO: small coffee machine for shop, coffee machine for small cafe</div>
+          </div>
+          <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            <div class="card overflow-hidden border-none shadow-sm transition hover:shadow-md product-card" data-keywords="SpaceSaver Mini compact small">
+              <img src="https://images.unsplash.com/photo-1517701604599-bb29b565090c?q=80&w=1600&auto=format&fit=crop" alt="SpaceSaver Mini" class="aspect-[4/3] w-full object-cover">
+              <div class="card-content"><h4 class="text-lg font-semibold">SpaceSaver Mini</h4><div class="mt-4 flex items-center justify-between"><a href="#contact" class="btn">Get Quote</a><a href="#" class="btn btn-ghost btn-sm wa-link">WhatsApp</a></div></div>
+            </div>
+            <div class="card overflow-hidden border-none shadow-sm transition hover:shadow-md product-card" data-keywords="CounterTop Pro compact">
+              <img src="https://images.unsplash.com/photo-1521017432531-fbd92d1cf06e?q=80&w=1600&auto=format&fit=crop" alt="CounterTop Pro" class="aspect-[4/3] w-full object-cover">
+              <div class="card-content"><h4 class="text-lg font-semibold">CounterTop Pro</h4><div class="mt-4 flex items-center justify-between"><a href="#contact" class="btn">Get Quote</a><a href="#" class="btn btn-ghost btn-sm wa-link">WhatsApp</a></div></div>
+            </div>
+            <div class="card overflow-hidden border-none shadow-sm transition hover:shadow-md product-card" data-keywords="MiniBar Commercial compact">
+              <img src="https://images.unsplash.com/photo-1517705008128-361805f42e86?q=80&w=1600&auto=format&fit=crop" alt="MiniBar Commercial" class="aspect-[4/3] w-full object-cover">
+              <div class="card-content"><h4 class="text-lg font-semibold">MiniBar Commercial</h4><div class="mt-4 flex items-center justify-between"><a href="#contact" class="btn">Get Quote</a><a href="#" class="btn btn-ghost btn-sm wa-link">WhatsApp</a></div></div>
+            </div>
+          </div>
+        </div> -->
+      </div>
+      <!-- /#category-wrap -->
+    </div>
+  </section>
+
+  <!-- COMPARISON (static) -->
+  <section class="bg-neutral-50 py-14">
+    <div class="mx-auto max-w-7xl px-6">
+      <h2 class="text-3xl font-bold md:text-4xl">Which Coffee Machine is Best for Your Cafe?</h2>
+      <p class="mt-2 max-w-3xl text-neutral-600">Compare types to choose the right machine for your service style and volume.</p>
+
+      <div class="mt-6 grid gap-4 md:grid-cols-2 lg:grid-cols-5">
+        <div class="card border-none shadow-sm"><div class="card-content"><p class="text-sm uppercase tracking-wide text-neutral-500">Espresso</p><p class="mt-1 font-medium">Best For: Authentic café menu</p><p class="mt-2 text-sm text-neutral-600">High throughput & consistency</p></div></div>
+        <div class="card border-none shadow-sm"><div class="card-content"><p class="text-sm uppercase tracking-wide text-neutral-500">Fully Automatic</p><p class="mt-1 font-medium">Best For: Quick service & variety</p><p class="mt-2 text-sm text-neutral-600">One‑touch operation</p></div></div>
+        <div class="card border-none shadow-sm"><div class="card-content"><p class="text-sm uppercase tracking-wide text-neutral-500">Drip / Filter</p><p class="mt-1 font-medium">Best For: Bulk black coffee</p><p class="mt-2 text-sm text-neutral-600">Low maintenance</p></div></div>
+        <div class="card border-none shadow-sm"><div class="card-content"><p class="text-sm uppercase tracking-wide text-neutral-500">Vending</p><p class="mt-1 font-medium">Best For: Self‑serve retail</p><p class="mt-2 text-sm text-neutral-600">Low staffing</p></div></div>
+        <div class="card border-none shadow-sm"><div class="card-content"><p class="text-sm uppercase tracking-wide text-neutral-500">With Grinder</p><p class="mt-1 font-medium">Best For: Freshly ground coffee</p><p class="mt-2 text-sm text-neutral-600">Best flavour</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BENEFITS / TRUST (repeat set, static) -->
+  <section class="bg-white py-14">
+    <div class="mx-auto max-w-7xl px-6">
+      <h2 class="text-3xl font-bold md:text-4xl">Why Ideal for Your Business</h2>
+      <div class="mt-6 grid gap-6 md:grid-cols-3">
+        <div class="card border-none shadow-sm"><div class="card-content flex items-center gap-4"><i data-lucide="truck" class="w-8 h-8 text-amber-600"></i><div><p class="font-semibold">Pan‑India Delivery & Installation</p><p class="text-sm text-neutral-600">Fast shipping and professional installation for commercial orders.</p></div></div></div>
+        <div class="card border-none shadow-sm"><div class="card-content flex items-center gap-4"><i data-lucide="shield-check" class="w-8 h-8 text-amber-600"></i><div><p class="font-semibold">Warranty & On‑Site Support</p><p class="text-sm text-neutral-600">Authorized products with dedicated after‑sales support and servicing.</p></div></div></div>
+        <div class="card border-none shadow-sm"><div class="card-content flex items-center gap-4"><i data-lucide="refresh-cw" class="w-8 h-8 text-amber-600"></i><div><p class="font-semibold">Service & Maintenance Plans</p><p class="text-sm text-neutral-600">Flexible maintenance and support options for businesses.  </p></div></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ (static) -->
+  <section class="bg-neutral-50 py-14">
+    <div class="mx-auto max-w-7xl px-6">
+      <h2 class="text-3xl font-bold md:text-4xl">FAQs – Coffee Machine for Cafe and Restaurant</h2>
+      <div class="mt-6 grid gap-6 md:grid-cols-2">
+        <div class="card border-none shadow-sm"><div class="p-5"><h3 class="text-lg font-semibold">Which machine is best for a small cafe?</h3></div><div class="px-5 pb-5"><p class="text-neutral-700">Compact two‑group espresso machines or small bean‑to‑cup units are ideal for limited spaces.</p></div></div>
+        <div class="card border-none shadow-sm"><div class="p-5"><h3 class="text-lg font-semibold">Do you offer installation and training?</h3></div><div class="px-5 pb-5"><p class="text-neutral-700">Yes — professional installation and barista training are available for commercial orders.</p></div></div>
+        <div class="card border-none shadow-sm">
+          <div class="p-5">
+            <h3 class="text-lg font-semibold">Can I experience the machines before buying?</h3>
+          </div>
+          <div class="px-5 pb-5">
+            <p class="text-neutral-700">
+              Yes! Visit our <strong>Experience Centers</strong> in <strong>Delhi</strong> and <strong>Jaipur</strong> to explore and try our machines firsthand. 
+              Contact us to book your personalized demo session.
+            </p>
+          </div>
+        </div>
+        <div class="card border-none shadow-sm"><div class="p-5"><h3 class="text-lg font-semibold">What support do you provide?</h3></div><div class="px-5 pb-5"><p class="text-neutral-700">On‑site servicing, maintenance plans and spare parts sourcing are available across major cities.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT CTA (no inline JS) -->
+  <section id="contact" class="bg-white py-14">
+    <div class="mx-auto max-w-7xl px-6">
+      <div class="grid gap-6 md:grid-cols-2">
+        <div>
+          <h2 class="text-3xl font-bold">Request a Quote for Your Cafe or Restaurant</h2>
+          <p class="mt-2 text-neutral-600">Tell us your service size and needs — we’ll recommend the right setup and provide a tailored quote.</p>
+        </div>
+        <div>
+          <form class="flex flex-col gap-3">
+            <input class="rounded-md border p-3 form-input" placeholder="Name / Business name" required />
+            <input class="rounded-md border p-3 form-input" placeholder="Email" type="email" required />
+            <input class="rounded-md border p-3 form-input" placeholder="Phone (WhatsApp)" />
+            <select style="width: 100%;" class="rounded-md border p-3 form-input">
+              <option>Select service type: Cafe / Restaurant / Shop</option>
+              <option>Cafe</option>
+              <option>Restaurant</option>
+              <option>Retail / Shop</option>
+            </select>
+            <textarea class="rounded-md border p-3" placeholder="Brief requirements (daily cups, space, preferred types)"></textarea>
+            <div class="flex gap-3">
+              <button type="submit" class="btn">Request Quote</button>
+              <a id="wa-contact" href="#" target="_blank" rel="noreferrer" class="btn btn-secondary">WhatsApp</a>
+            </div>
+            <p id="contact-success" class="hidden text-sm text-green-600">Thanks! We’ll get back to you shortly.</p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BOTTOM CTA -->
+  <section class="sticky bottom-0 z-40 bg-white/80 backdrop-blur supports-[backdrop-filter]:bg-white/60">
+    <div class="mx-auto max-w-7xl px-6 py-3">
+      <div class="flex flex-col items-center justify-between gap-3 md:flex-row">
+        <p class="text-sm text-neutral-700">Ready to equip your cafe or restaurant? Get a tailored quote from Ideal.</p>
+        <div class="flex items-center gap-3">
+          <a href="#contact" class="btn">Get Quote</a>
+          <a id="wa-bottom" href="#" target="_blank" rel="noreferrer" class="btn btn-secondary">WhatsApp</a>    
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-neutral-900 py-10 text-neutral-300">
+    <div class="mx-auto max-w-7xl px-6">
+      <p class="text-sm">© <span id="year"></span> Ideal. All rights reserved.</p>
+      <p class="mt-2 text-xs opacity-80">Keywords: coffee machine for cafe and restaurant, commercial espresso machine, fully automatic machine for cafe, coffee vending machine for shop, coffee machine with grinder</p>
+    </div>
+  </footer>
+
+  <script>
+    // Minimal, necessary JS only
+    const WHATSAPP_NUMBER = "91XXXXXXXXXX"; // replace with your number
+    const WHATSAPP_TEXT = encodeURIComponent("Hi, I'm interested in a coffee machine for my cafe/restaurant. Please guide me.");
+    const waLink = `https://wa.me/${WHATSAPP_NUMBER}?text=${WHATSAPP_TEXT}`;
+
+    // Set WA links (including product cards)
+    document.querySelectorAll('#wa-fab, #wa-hero, #wa-contact, #wa-bottom, .wa-link').forEach(a=>{ a && (a.href = waLink); });
+
+    // Year stamp
+    const y = document.getElementById('year'); if (y) y.textContent = new Date().getFullYear();
+
+    // Tiny client-side filter
+    const search = document.getElementById('search');
+    if (search) {
+      search.addEventListener('input', () => {
+        const q = search.value.trim().toLowerCase();
+        document.querySelectorAll('.product-card').forEach(card => {
+          const hit = card.dataset.keywords?.toLowerCase().includes(q);
+          card.style.display = (q === '' || hit) ? '' : 'none';
+        });
+        document.querySelectorAll('.category-block').forEach(block => {
+          const any = Array.from(block.querySelectorAll('.product-card')).some(c => c.style.display !== 'none');
+          block.style.display = (q === '' || any) ? '' : 'none';
+        });
+      });
+    }
+
+    // Icons
+    if (window.lucide) lucide.createIcons();
+  </script>
+</body>
+</html>
